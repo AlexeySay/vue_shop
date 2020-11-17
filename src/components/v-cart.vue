@@ -1,6 +1,5 @@
 <template>
   <div class="v-cart">
-      <p>Cart</p>
   </div>
 </template>
 
@@ -13,6 +12,6 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 
 </style>
