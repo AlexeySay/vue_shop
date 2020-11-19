@@ -23,6 +23,9 @@ let store = new Vuex.Store({
             })
             isProductExist || state.cart.push({ ...product, quantity: 1 })
         },
+        REMOVE_FROM_CART: (state, index) => {
+            state.cart.splice(index, 1)
+        }
     },
     actions: {
         GET_PRODUCTS_FROM_API({ commit }) {
