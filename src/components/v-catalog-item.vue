@@ -2,7 +2,7 @@
   <div class="v-catalog-item">
       <p>{{ product__data.name }}</p>
       <p>{{ product__data.price }}$</p>
-      <button class="btn" @click="sendDataToParent">Add to cart</button>
+      <button class="btn" @click="addToCart">Add to cart</button>
   </div>
 </template>
 
@@ -23,9 +23,12 @@ export default {
         return {}
     },
     methods: {
-        sendDataToParent() {
-            this.$emit('sendArticle', this.product__data.article )
+        addToCart() {
+            this.$emit('addToCart', this.product__data)
         }
+    },
+    mounted() {
+      this.$set(this.product_data, 'quantity', 1)
     }
 }
 </script>
@@ -33,23 +36,26 @@ export default {
 <style lang="scss">
 
 .v-catalog-item {
-    min-width: 200px;
-    flex: 1 1 0;
-    padding: $padding;
+    width: 30%;
+    padding: $padding*2;
     margin: $margin*2;
-    background-color: rgba(51, 51, 51, 0.2);
-    box-shadow: 1px 1px 3px -1px #000;
+    background-color: transparent;
+    box-shadow: 0px 0px 4px 1px #ccc;
     transition: .2s linear;
     cursor: pointer;
+    border-radius: 3px;
     &:hover {
-        box-shadow: 1px 1px 6px -1px #000;
+        box-shadow: 0px 0px 8px 1px #999;
     }
     .btn {
         cursor: pointer;
         font-family: consolas;
-        border: 1px solid #000;
+        border: 0;
         padding: 5px 10px;
-        background-color: #fff;
+        background-color: #1f9c3a;
+        color: #fff;
+        font-size: 16px;
+        border-radius: 3px;
         transition: .2s linear;
     }
 }

@@ -1,25 +1,25 @@
 <template>
     <div class="v-main-wrapper">
-        <v-catalog />
-        <v-cart />
+        <keep-alive>
+            <router-view></router-view>
+        </keep-alive>
     </div>
 </template>
 
 <script>
-import vCatalog from './v-catalog'
-import vCart from './v-cart'
+import {mapGetters} from 'vuex'
 
 export default {
     name: "v-main-wrapper",
-    components: {
-        vCatalog,
-        vCart
-    },
     props: {},
     data() {
         return {}
     },
-    computed: {},
+    computed: {
+        ...mapGetters([
+            'CART'
+        ])
+    },
     methods: {},
     watch: {},
 }
@@ -27,6 +27,25 @@ export default {
 
 <style lang="scss">
 body {margin: 0;} :focus {outline: none;} *{box-sizing: border-box;}
+
+.router__link {
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 20px 20px 0 0;
+    padding: 5px 10px;
+    background-color: #fff;
+    border: 3px solid #1f9c3a;
+    cursor: pointer;
+    transition: .22s linear;
+    &:hover {
+        background-color: #1f9c3a;
+        color: #fff;
+    }
+}
+a {
+    color: #1f9c3a;
+}
 
 .v-main-wrapper {
     width: 100%;
