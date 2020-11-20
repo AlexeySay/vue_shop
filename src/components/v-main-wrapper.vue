@@ -26,7 +26,7 @@ export default {
 </script>
 
 <style lang="scss">
-body {margin: 0;} :focus {outline: none;} *{box-sizing: border-box;}
+body {margin: 0;}  *{box-sizing: border-box;} button {cursor: pointer;}
 
 .router__link {
     position: fixed;

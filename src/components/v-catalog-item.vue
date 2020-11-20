@@ -27,9 +27,6 @@ export default {
             this.$emit('addToCart', this.product__data)
         }
     },
-    mounted() {
-        this.$set(this.cart_item_data, 'quantity', 1)
-    }
 }
 </script>
 

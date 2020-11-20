@@ -5,7 +5,13 @@
         <p>{{ cart_item_data.name }}</p>
         <p>{{ cart_item_data.price }}$</p>
         <p>Artricle:{{ cart_item_data.article }}</p>
-        <p>Quantity:{{ cart_item_data.quantity }}</p>
+
+        <p>
+            Quantity:
+            <button @click="quantityPlus">+</button>
+            {{ cart_item_data.quantity }}
+            <button @click="quantityMinus">-</button>
+        </p>
     </div>
 
     <button class="btn__delete" @click="deleteFromCard" >Delete</button>
@@ -13,6 +19,7 @@
 </template>
 
 <script>
+
 export default {
     name: 'v-cart-item',
     props: {
@@ -24,6 +31,12 @@ export default {
         }
     },
     methods: {
+        quantityPlus() {
+            this.$emit('quantityPlus')
+        },
+        quantityMinus() {
+            this.$emit('quantityMinus')
+        },
         deleteFromCard() {
             this.$emit('deleteFromCard')
         }

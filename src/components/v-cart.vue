@@ -13,9 +13,14 @@
                 :key="item.article"
                 :cart_item_data="item"
                 @deleteFromCard="deleteFromCard(index)"
+                @quantityPlus="quantityPlus(index)"
+                @quantityMinus="quantityMinus(index)"
             />
         </div>
 
+        <div class="v-cart__tota">
+            <p>Total: {{ cartTotalCost }} $</p>
+        </div>
     </div>
 </template>
 
@@ -39,10 +44,34 @@ export default {
     data() {
         return {}
     },
+    computed: {
+        cartTotalCost() {
+            let result = []
+            if (this.cart_data.length) {
+                for (let item of this.cart_data) {
+                    result.push(item.price * item.quantity)
+                }
+                result = result.reduce(function (sum, el) {
+                    return sum + el; 
+                })
+                return result;
+            } else {
+            return 0
+            }
+        }
+    },
     methods: {
         ...mapActions([
-            'DELETE_FROM_CART'
+            'DELETE_FROM_CART',
+            'QUANTITY_PLUS',
+            'QUANTITY_MINUS'
         ]),
+        quantityPlus(index) {
+            this.QUANTITY_PLUS(index)
+        },
+        quantityMinus(index) {
+            this.QUANTITY_MINUS(index)
+        },
         deleteFromCard(index) {
             this.DELETE_FROM_CART(index)
         }
@@ -51,9 +80,16 @@ export default {
 </script>
 
 <style lang="scss">
-    .v-cart {
-        display: flex;
-        flex-direction: column;
+.v-cart__total {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: $padding*3;
+}
+
+.v-cart {
+    display: flex;
+    flex-direction: column;
 
     .cart__title {
         margin: 30px 0;
