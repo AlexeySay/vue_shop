@@ -1,13 +1,24 @@
 <template>
     <div class="v-cart">
-        <router-link :to="{name: 'catalog'}">
-            <div class="router__link"> Back to catalog </div>
-        </router-link>
+
+        <div class="button">
+            <router-link :to="{name: 'catalog'}">
+                <div class="router__link"> Back to catalog </div>
+            </router-link>
+        </div>
         
-        <h3 class="cart__title">Cart</h3>
-        <p v-if="!cart_data.length">There are no products in your cart</p>
+        <header class="header">
+            <h3 class="cart__title">Cart</h3>
+        </header>
+
+        <div class="v-cart__total">
+            <div>Total</div>
+            <div>{{ cartTotalCost }} $</div>
+        </div>
 
         <div class="cart__inner">
+            <p v-if="!cart_data.length">There are no products in your cart</p>
+
             <v-cart-item 
                 v-for="(item, index) in cart_data"
                 :key="item.article"
@@ -16,10 +27,6 @@
                 @quantityPlus="quantityPlus(index)"
                 @quantityMinus="quantityMinus(index)"
             />
-        </div>
-
-        <div class="v-cart__tota">
-            <p>Total: {{ cartTotalCost }} $</p>
         </div>
     </div>
 </template>
@@ -54,7 +61,7 @@ export default {
                 result = result.reduce(function (sum, el) {
                     return sum + el; 
                 })
-                return result;
+                return result.toFixed(2);
             } else {
             return 0
             }
@@ -80,27 +87,62 @@ export default {
 </script>
 
 <style lang="scss">
-.v-cart__total {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: $padding*3;
-}
 
 .v-cart {
-    display: flex;
-    flex-direction: column;
-
-    .cart__title {
-        margin: 30px 0;
-        font-size: 40px;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 75vw 25vw;
+    grid-template-rows: 10vh 90vh;
+    grid-template-areas: 
+    "header button"
+    "items total";
+    .header {
+        grid-area: header;
+        border-bottom: 1px solid #ccc;
+        .cart__title {
+            margin: 10px 0;
+            font-size: 40px;
+        }
+    }
+    .button {
+        grid-area: button;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .router__link {
+            margin: 0;
+            position: unset;
+        }
     }
     .cart__inner {
+        grid-area: items;
         width: 100%;
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
         flex-wrap: wrap;
+        overflow: auto;
+        &::-webkit-scrollbar {
+            width: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: #ccc;
+            border-radius: 5px;
+        }
+    }
+    .v-cart__total {
+        grid-area: total;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        font-size: 2vw;
     }
 }
-    
+a {
+    text-decoration: none;
+}
 </style>

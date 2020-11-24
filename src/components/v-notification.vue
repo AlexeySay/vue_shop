@@ -12,11 +12,6 @@
                     <span>{{ message.icon }}</span>
                 </div>
 
-                <div class="content__btn">
-                    <button v-if="rightButton.length" >{{ rightButton }}</button>
-                    <button v-if="leftButton.length" >{{ leftButton }}</button>
-                </div>
-
             </div>
         </transition-group>
         
@@ -85,7 +80,7 @@ export default {
         align-items: center;
         margin: 0 auto 16px;
         height: 50px;
-        font-size: 16px;
+        font-size: 1.4vw;
         &.add {
             background: #1f9c3a;
         }
@@ -99,18 +94,6 @@ export default {
                 margin: 0 2px;
             }
         }
-    }
-    button {
-        border: 0;
-        height: 16px;
-        font-family: consolas,serif;
-        margin-left: 8px;
-        border-radius: 3px;
-        background: #fff;
-        &:focus {
-            outline: none;
-            box-shadow: 0px 0px 0px 1px #000;
-        } 
     }
 }
 .v-notification-animate {
@@ -132,10 +115,10 @@ export default {
         opacity: 1;
     }
     &-leave-active {
-        transition: transform .6s ease, opacity .6s linear, height .6s .2s;
+        transition: transform .6s ease, opacity .6s linear;
     }
     &-leave-to {
-        height: 0;
+        height: 50px;
         transform: translateX(120px);
         opacity: 0;
     }

@@ -26,7 +26,7 @@ export default {
 </script>
 
 <style lang="scss">
-body {margin: 0;}  *{box-sizing: border-box;} button {cursor: pointer;}
+body {margin: 0;}  *{box-sizing: border-box;} button {cursor: pointer;} p {margin: 0;}
 
 .router__link {
     position: fixed;
@@ -38,23 +38,33 @@ body {margin: 0;}  *{box-sizing: border-box;} button {cursor: pointer;}
     border: 3px solid #1f9c3a;
     cursor: pointer;
     transition: .22s linear;
+    font-size: 1.6vw;
     &:hover {
         background-color: #1f9c3a;
         color: #fff;
     }
 }
 a {
+    object-fit: cover;
     color: #1f9c3a;
 }
-
+img {
+    object-fit: cover;
+    min-width: 9vw;
+    width: 9vw;
+}
 .v-main-wrapper {
     width: 100%;
-    max-width: 85vw;
     margin: 0 auto;
 
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+}
+@media(max-width: 1270px) {
+    .router__link {
+        font-size: 2.2vw;
+    }
 }
 
 </style>

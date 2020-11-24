@@ -8,16 +8,17 @@
             :messages="messages"
             :timeout="4000"
         />
+        <div class="container">
+            <h1 class="catalog__title">Catalog</h1>
 
-        <h1 class="catalog__title">Catalog</h1>
-
-        <div class="catalog__inner">
-            <v-catalog-item 
-                v-for="product in PRODUCTS"
-                :key="product.article"
-                :product__data="product"
-                @addToCart="addToCart" 
-            />
+            <div class="catalog__inner">
+                <v-catalog-item 
+                    v-for="product in PRODUCTS"
+                    :key="product.article"
+                    :product__data="product"
+                    @addToCart="addToCart" 
+                />
+            </div>
         </div>
     </div>
 </template>
@@ -72,14 +73,18 @@ export default {
     display: flex;
     flex-direction: column;
 
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
     .catalog__title {
-        margin: 30px 0;
-        font-size: 40px;
+        margin: 1.5vw 0;
+        font-size: 3vw;
     }
     .catalog__inner {
         width: 100%;
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
         flex-wrap: wrap;
     }
 }

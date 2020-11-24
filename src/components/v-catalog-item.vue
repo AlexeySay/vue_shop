@@ -1,5 +1,6 @@
 <template>
   <div class="v-catalog-item">
+      <img class="v-cart-item__image" :src=" require('../assets/images/' + product__data.image) " alt="img">
       <p>{{ product__data.name }}</p>
       <p>{{ product__data.price }}$</p>
       <button class="btn" @click="addToCart">Add to cart</button>
@@ -33,14 +34,15 @@ export default {
 <style lang="scss">
 
 .v-catalog-item {
-    width: 30%;
-    padding: $padding*2;
-    margin: $margin*2;
+    min-width: 25%;
+    padding: 1vw;
+    margin: 2vw;
     background-color: transparent;
     box-shadow: 0px 0px 4px 1px #ccc;
     transition: .2s linear;
     cursor: pointer;
     border-radius: 3px;
+    font-size: 1.8vw;
     &:hover {
         box-shadow: 0px 0px 8px 1px #999;
     }
@@ -51,7 +53,8 @@ export default {
         padding: 5px 10px;
         background-color: #1f9c3a;
         color: #fff;
-        font-size: 16px;
+        margin: 1vw 0;
+        font-size: 1.4vw;
         border-radius: 3px;
         transition: .2s linear;
     }
