@@ -88,5 +88,9 @@ export default {
         flex-wrap: wrap;
     }
 }
-
+@media(max-width: 460px) {
+    .catalog__title {
+        font-size: 5vw !important;
+    }
+}
 </style>

@@ -48,11 +48,6 @@ a {
     object-fit: cover;
     color: #1f9c3a;
 }
-img {
-    object-fit: cover;
-    min-width: 9vw;
-    width: 9vw;
-}
 .v-main-wrapper {
     width: 100%;
     margin: 0 auto;
@@ -61,9 +56,16 @@ img {
     flex-direction: column;
     justify-content: flex-start;
 }
-@media(max-width: 1270px) {
+@media(max-width: 650px) {
     .router__link {
-        font-size: 2.2vw;
+        margin: 1vw 1vw 0 0;
+        font-weight: 900;
+        font-size: 2vw;
+    }
+}
+@media(max-width: 460px) {
+    .router__link {
+        font-size: 2.4vw;
     }
 }
 

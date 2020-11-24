@@ -59,5 +59,32 @@ export default {
         transition: .2s linear;
     }
 }
-
+img {
+    object-fit: cover;
+    min-width: 9vw;
+    width: 9vw;
+}
+@media(max-width: 650px) {
+    .v-catalog-item {
+        font-size: 2.4vw;
+    }
+    img {
+        width: 12vw !important;
+    }
+    .btn {
+        font-size: 2vw !important;
+    }
+}
+@media(max-width: 460px) {
+    .v-catalog-item {
+        min-width: 40%;
+        font-size: 3vw;
+    }
+    img {
+        width: 14vw !important;
+    }
+    .btn {
+        font-size: 3vw !important;
+    }
+}
 </style>
