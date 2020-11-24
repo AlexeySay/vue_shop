@@ -4,6 +4,11 @@
             <div class="router__link">You cart {{ CART.length }} </div>
         </router-link>
 
+        <vNotification 
+            :messages="messages"
+            :timeout="4000"
+        />
+
         <h1 class="catalog__title">Catalog</h1>
 
         <div class="catalog__inner">
@@ -20,17 +25,19 @@
 <script>
 import vCatalogItem from './v-catalog-item'
 import {mapActions, mapGetters} from 'vuex'
+import vNotification from './v-notification'
 
 export default {
     name: 'v-catalog',
     props: {},
     data() {
         return {
-            
+            messages: []
         }
     },
     components: {
         vCatalogItem,
+        vNotification
     },
     computed: {
         ...mapGetters([
@@ -45,6 +52,12 @@ export default {
         ]),
         addToCart(data) {
             this.ADD_TO_CART(data)
+            .then(() => {
+                let timekey = Date.now().toLocaleString()
+                this.messages.unshift(
+                    { name: 'Товар добавлен', bgc: 'add', icon: '✔', id: timekey}
+                )
+            })
         }
     },
     mounted() {
