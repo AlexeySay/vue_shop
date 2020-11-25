@@ -34,14 +34,14 @@ body {margin: 0;}  *{box-sizing: border-box;} button {cursor: pointer;} p {margi
     right: 0;
     margin: 20px 20px 0 0;
     padding: 5px 10px;
-    background-color: #fff;
-    border: 3px solid #1f9c3a;
+    background-color: #1f9c3a;
+    color: #fff;
+    border-radius: 5px;
     cursor: pointer;
     transition: .22s linear;
     font-size: 1.6vw;
     &:hover {
-        background-color: #1f9c3a;
-        color: #fff;
+        box-shadow: 1px 1px 4px 0px #000;
     }
 }
 a {

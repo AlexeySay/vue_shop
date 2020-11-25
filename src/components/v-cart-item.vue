@@ -9,11 +9,13 @@
         <p>Artricle:{{ cart_item_data.article }}</p>
     </div>
 
-    <div>
-        Quantity:
-        <button @click="quantityPlus">+</button>
-        {{ cart_item_data.quantity }}
-        <button @click="quantityMinus">-</button>
+    <div class="item__quantity">
+        <p>Quantity</p>
+        <div>
+            <button class="quantity__btn" @click="quantityPlus">+</button>
+            {{ cart_item_data.quantity }}
+            <button class="quantity__btn" @click="quantityMinus">-</button>
+        </div>
     </div>
 
     <button class="btn__delete" @click="deleteFromCard" >Delete</button>
@@ -52,14 +54,11 @@ export default {
 
 <style lang='scss'>
 .v-cart-item {
-    width: 100%;
-    height: 280px;
+    height: 300px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-
-    padding: 20px;
-    margin: 20px;
+    margin: 35px 25px;
     background-color: transparent;
     box-shadow: 0px 0px 4px 1px #ccc;
     transition: .2s linear;
@@ -72,28 +71,53 @@ export default {
 }
 .btn__delete {
     cursor: pointer;
-    height: 50px;
+    height: 45px;
+    width: 120px;
     font-family: consolas;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 5px 10px;
     background-color: #e23d;
     transition: .2s linear;
     border: 0;
     color: #fff;
-    font-size: 1.6vw;
+    font-size: 20px;
     border-radius: 3px;
 }
 img {
-    object-fit: cover;
     min-width: 9vw;
     width: 9vw;
     max-height: 100%;
 }
-@media (max-width: 1270px) {
+@media(max-width: 650px) {
     .v-cart-item {
-        font-size: 2.2vw;
+        margin: 35px 0;
+        height: 30vw;
     }
     .btn__delete {
-        font-size: 2.5vw;
+        height: 25px;
+        width: 80px;
+        font-size: 16px;
+    }
+    .v-cart-item__info {
+        font-size: 18px;
+    }
+    .item__quantity {
+        font-size: 18px;
+    }
+    .quantity__btn {
+        max-width: 25px;
+        max-height: 25px;
+    }
+}
+@media(max-width: 460px) {
+    .v-cart-item {
+        margin: 15px 0;
+        height: 30vw;
+    }
+    .btn__delete {
+        margin-top: 10px;
     }
 }
 </style>

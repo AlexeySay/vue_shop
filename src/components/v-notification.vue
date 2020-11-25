@@ -72,14 +72,13 @@ export default {
     display: flex;
     flex-direction: column-reverse;
     &__content {
-        padding: 16px;
+        padding: 1vw 2vw;
         border-radius: 4px;
         color: #fff;
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin: 0 auto 16px;
-        height: 50px;
         font-size: 1.4vw;
         &.add {
             background: #1f9c3a;
@@ -118,9 +117,20 @@ export default {
         transition: transform .6s ease, opacity .6s linear;
     }
     &-leave-to {
-        height: 50px;
         transform: translateX(120px);
         opacity: 0;
+    }
+}
+@media(max-width: 650px) {
+    .content__text {
+        font-size: 10px;
+        padding: 1vw 2vw;
+    }
+}
+@media(max-width: 460px) {
+    .content__text {
+        font-size: 10px;
+        padding: 1vw 2vw;
     }
 }
 </style>
