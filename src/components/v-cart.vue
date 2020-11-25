@@ -97,7 +97,7 @@ export default {
     min-height: 100vh;
     display: grid;
     grid-template-columns: 75vw 24vw;
-    grid-template-rows: 10vh 1fr;
+    grid-template-rows: 10vh 90vh;
     grid-template-areas: 
     "header button"
     "items total";
@@ -125,6 +125,7 @@ export default {
     .v-cart__cart {
         grid-area: items;
         display: flex;
+        height: 100%;
         justify-content: center;
         align-items: center;
         padding: 1vw;
